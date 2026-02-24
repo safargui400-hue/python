@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% set page_title = 'Gestion des Produits' %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3>Gestion des produits & stocks</h3>
+    <button class="btn">+ Ajouter un produit</button>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Produit</th><th>Prix d'Achat</th><th>Prix de Vente</th><th>Stock</th><th>Total</th><th>Statut</th></tr>
+    </thead>
+    <tbody>
+      {% for p in products %}
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ '{:,.0f}'.format(p.achat) }} F</td>
+        <td>{{ '{:,.0f}'.format(p.vente) }} F</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ '{:,.0f}'.format(p.vente * p.stock) }} F</td>
+        <td>
+          {% if p.stock > 3 %}<span class="tag ok">En stock</span>
+          {% elif p.stock > 1 %}<span class="tag warn">Faible</span>
+          {% else %}<span class="tag danger">Rupture</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
