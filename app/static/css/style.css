@@ -1,0 +1,49 @@
+:root {
+  --bg: #f3f5fb;
+  --panel: #ffffff;
+  --text: #1f2a44;
+  --muted: #7f8aa3;
+  --blue: #2d7bbf;
+  --orange: #ff8c3a;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, Arial, sans-serif; color: var(--text); background: var(--bg); }
+.layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+.sidebar { background: linear-gradient(180deg, #2b7db8, #245b89); color: #fff; padding: 20px; }
+.logo { font-weight: 700; margin-bottom: 20px; }
+.logo span { color: #ffb34a; }
+.sidebar nav { display: grid; gap: 8px; }
+.sidebar a { color: #dcecff; text-decoration: none; padding: 10px; border-radius: 8px; }
+.sidebar a:hover { background: rgba(255,255,255,.15); }
+.content { padding: 24px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; }
+.btn { background: var(--orange); color: white; border: 0; text-decoration: none; padding: 10px 14px; border-radius: 8px; font-weight: 600; }
+.kpis, .cards-4 { display: grid; gap: 14px; margin: 20px 0; }
+.kpis { grid-template-columns: repeat(4, minmax(130px, 1fr)); }
+.kpis article, .metric { background: var(--panel); border-radius: 12px; padding: 16px; box-shadow: 0 4px 16px rgba(31,42,68,.06); }
+.kpis strong { display: block; font-size: 28px; }
+.kpis span { color: var(--muted); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.card { background: var(--panel); border-radius: 12px; padding: 16px; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(31,42,68,.06); }
+.card-header { display: flex; justify-content: space-between; align-items: center; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid #e6eaf3; text-align: left; padding: 10px; }
+.tag { border-radius: 999px; padding: 4px 10px; font-size: 12px; color: #fff; }
+.tag.ok { background: #2ea68a; }
+.tag.warn { background: #ff9d3f; }
+.tag.danger { background: #ef5548; }
+.cards-4 { grid-template-columns: repeat(4, minmax(140px, 1fr)); }
+.metric { color: #fff; }
+.metric h4 { margin-top: 0; }
+.m1 { background: linear-gradient(135deg, #51c7bb, #3bb6a8); }
+.m2 { background: linear-gradient(135deg, #74b5fb, #5a9df2); }
+.m3 { background: linear-gradient(135deg, #ff9b41, #ff7a26); }
+.m4 { background: linear-gradient(135deg, #7d78f6, #5a5ce1); }
+.rapport-page { padding: 28px; }
+.rapport { max-width: 900px; margin: auto; background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(31,42,68,.08); }
+.rapport h1 { margin-top: 0; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: sticky; top: 0; }
+  .kpis, .cards-4, .grid-2 { grid-template-columns: 1fr; }
+}

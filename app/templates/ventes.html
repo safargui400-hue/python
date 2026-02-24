@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% set page_title = 'Gestion des Clients & Commandes' %}
+{% block content %}
+<section class="cards-4">
+  <article class="metric m1"><h4>Ventes Totales</h4><strong>{{ cards.ventes_total }}</strong></article>
+  <article class="metric m2"><h4>Bénéfices Total</h4><strong>{{ cards.benefices_total }}</strong></article>
+  <article class="metric m3"><h4>Produit Rentable</h4><strong>{{ cards.produit_rentable }}</strong></article>
+  <article class="metric m4">
+    <h4>Clients Fidèles</h4>
+    <ul>{% for c in cards.clients_fideles %}<li>{{ c }}</li>{% endfor %}</ul>
+  </article>
+</section>
+
+<div class="card">
+  <h3>Ventes & Bénéfices</h3>
+  <canvas id="profitChart"></canvas>
+</div>
+{% endblock %}

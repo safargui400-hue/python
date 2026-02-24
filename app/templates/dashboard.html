@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% set page_title = 'Tableau de bord' %}
+{% block content %}
+<section class="kpis">
+  <article><strong>{{ kpis.stock }}</strong><span>Stock</span></article>
+  <article><strong>{{ kpis.produits }}</strong><span>Articles</span></article>
+  <article><strong>{{ kpis.rupture }}</strong><span>En rupture</span></article>
+  <article><strong>{{ kpis.clients }}</strong><span>Clients</span></article>
+</section>
+
+<section class="grid-2">
+  <div class="card">
+    <h3>Ventes mensuelles</h3>
+    <canvas id="salesChart"></canvas>
+  </div>
+  <div class="card">
+    <h3>Produits en rupture</h3>
+    <canvas id="stockoutChart"></canvas>
+  </div>
+</section>
+
+<div class="card">
+  <h3>Dernières Factures</h3>
+  <table>
+    <thead>
+      <tr><th>Produit</th><th>Prix d'Achat</th><th>Prix de Vente</th><th>Stock</th><th>Statut</th></tr>
+    </thead>
+    <tbody>
+      {% for p in products %}
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ '{:,.0f}'.format(p.achat) }} F</td>
+        <td>{{ '{:,.0f}'.format(p.vente) }} F</td>
+        <td>{{ p.stock }}</td>
+        <td>
+          {% if p.stock > 3 %}<span class="tag ok">En stock</span>
+          {% elif p.stock > 1 %}<span class="tag warn">Faible</span>
+          {% else %}<span class="tag danger">Rupture</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
